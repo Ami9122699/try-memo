@@ -13,20 +13,25 @@ file_name = gets.chomp
 puts "メモしたい内容を入力"
 puts "終了後　ctrl + D を押す"
 
-memo = STDIN.read
-
+imput_memo = STDIN.read
+memo = imput_memo.chomp
 CSV.open("#{file_name}.csv","w") do |csv|
 csv << ["#{memo}"]
+
+puts memo
 end
   
 elsif memo_type == 2
-puts "編集内容を入力" 
-puts "終了後、ctrl+D を押す"
+puts "保存されているメモを編集。拡張子なしで名前を入力してください。" 
+file_name = gets.chomp
 
-memo == STDIN.read
+print "メモの内容を編集して下さい。Ctrl+Dで保存します"
+edit_memo = STDIN.read
+memo = edit_memo.chomp
 
 CSV.open("#{file_name}.csv","a") do |csv|
 csv << ["#{memo}"]
+
 end
 end
  # if文を使用して続きを作成していきましょう。
